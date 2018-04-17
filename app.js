@@ -29,10 +29,10 @@ else if (!args.file && !args.url) {
   console.error('at least one of the following arguments are mandatory: --file, --url');
 }
 else {
-  utils.writeFile('settings', './src/settings.js', `const settings = ${JSON.stringify(args)};`)
-    .then(() => utils.writeFile('title', './src/title.js', `document.title = '${args.title}';`))
+  utils.writeFile('settings', path.resolve('./src/settings.js'), `const settings = ${JSON.stringify(args)};`)
+    .then(() => utils.writeFile('title', path.resolve('./src/title.js'), `document.title = '${args.title}';`))
     .then(() => utils.getData(args.file, args.url, args.query))
-    .then(data => utils.writeFile('data', './src/data.js', `const data = ${JSON.stringify(data)};`))
+    .then(data => utils.writeFile('data', path.resolve('./src/data.js'), `const data = ${JSON.stringify(data)};`))
     .then(() => openurl.open(path.resolve('./src/index.html')))
     .catch((err) => {
       console.error(err);
