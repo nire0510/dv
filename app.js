@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const openurl = require('openurl');
+const os = require('os');
 const path = require('path');
 const utils = require('./src/utils');
 
@@ -29,11 +30,11 @@ else if (!args.file && !args.url) {
   console.error('at least one of the following arguments are mandatory: --file, --url');
 }
 else {
-  utils.writeFile('settings', '/tmp/settings.js', `const settings = ${JSON.stringify(args)};`)
-    .then(() => utils.writeFile('title', '/tmp/title.js', `document.title = '${args.title}';`))
+  utils.writeFile('settings', path.join(__dirname, '/src/settings.js'), `const settings = ${JSON.stringify(args)};`)
+    .then(() => utils.writeFile('title', path.join(__dirname, '/src/title.js'), `document.title = '${args.title}';`))
     .then(() => utils.getData(args.file, args.url, args.query))
-    .then(data => utils.writeFile('data', '/tmp/data.js', `const data = ${JSON.stringify(data)};`))
-    .then(() => openurl.open(path.resolve(`${__dirname}/src/index.html`)))
+    .then(data => utils.writeFile('data', path.join(__dirname, '/src/data.js'), `const data = ${JSON.stringify(data)};`))
+    .then(() => openurl.open(path.join(__dirname, '/src/index.html')))
     .catch((err) => {
       console.error(err);
     });
