@@ -1,6 +1,6 @@
 {
   "name": "dvcli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Friendly viewer for local or online JSON files - CLI tool",
   "main": "app.js",
   "preferGlobal": true,
