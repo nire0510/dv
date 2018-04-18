@@ -5,27 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Data Viewer</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="vendor/bootstrap.css">
+  <link rel="stylesheet" href="vendor/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="vendor/datatables.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <table id="table" class="table table-striped table-bordered" style="width:100%"></table>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+  <div id="buttons"></div>
+  <script src="vendor/jquery-3.3.1.min.js"></script>
+  <script src="vendor/datatables.min.js"></script>
+  <script src="vendor/dataTables.bootstrap4.min.js"></script>
   <script src="title.js"></script>
   <script src="settings.js"></script>
   <script src="data.js"></script>
   <script>
-    $('#table').DataTable(Object.assign({
+    const $table = $('#table').DataTable(Object.assign({
       data,
       columns: Object.keys(data[0]).map(k => ({
         title: k,
         data: k
       })),
     }, settings));
+
+    $table.buttons().container()
+      .appendTo($('#buttons'));
   </script>
 </body>
 </html>

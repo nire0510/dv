@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 const openurl = require('openurl');
-const os = require('os');
 const path = require('path');
 const utils = require('./src/utils');
 

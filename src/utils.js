@@ -39,7 +39,13 @@ function parseArgs(argv) {
     stopEarly: true,
   });
 
+  settings.buttons = ['copy', 'csv', 'excel', 'pdf'];
+  settings.colReorder = true;
+  settings.fixedHeader = true;
   settings.scrollCollapse = settings.x || settings.y;
+  settings.select = {
+    style: 'multi',
+  };
 
   return settings;
 }

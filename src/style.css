@@ -3402,3 +3402,7 @@ div.notice {
   border: 1px solid #ccc;
   border-radius: 4px
 }
+
+#buttons {
+  margin-left: 1rem;
+}
