@@ -20,16 +20,21 @@
   <script src="settings.js"></script>
   <script src="data.js"></script>
   <script>
-    const $table = $('#table').DataTable(Object.assign({
-      data,
-      columns: Object.keys(data[0]).map(k => ({
-        title: k,
-        data: k
-      })),
-    }, settings));
+    if (!data || !Array.isArray(data) || data.length === 0) {
+      alert('Empty data, nothing to display');
+    }
+    else {
+      const $table = $('#table').DataTable(Object.assign({
+        data,
+        columns: Object.keys(data[0]).map(k => ({
+          title: k,
+          data: k
+        })),
+      }, settings));
 
-    $table.buttons().container()
-      .appendTo($('#buttons'));
+      $table.buttons().container()
+        .appendTo($('#buttons'));
+    }
   </script>
 </body>
 </html>
